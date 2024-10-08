@@ -1,0 +1,46 @@
+target: meshgen.model.texturing.texture_pbr_painter.SparseViewPBRPainter
+params:
+  control_scale: [1.0, 0.0]
+  radius: 4
+  albedo_prompt: ""
+  start_timestep_idx: 0
+  sync_latent_end: 1.0
+  sync_exp_start: 0.0
+  sync_exp_end: 5.0
+  multiview_generator:
+    target: zero123pp.controlnet_joint_model_mesh_denoising.MVJointControlNet
+    params:
+      stable_diffusion_config:
+        pretrained_model_name_or_path: sudo-ai/zero123plus-v1.2
+        custom_pipeline: ./zero123pp
+      control_type: depth
+      # ckpt_path: /pfs/mt-1oY5F7/chenzilong/Texturing/logs/2024-09-23T21-38-03_depth_mv_only/checkpoints/last.ckpt
+      conditioning_scale: 0.8
+      scheduler_type: ddim
+  mesh_kwargs:
+    rotate: True
+    texture_resolution: [1024, 1024]
+    mesh_scale: 0.9
+    use_latent: True
+  sr_model:
+    target: meshgen.modules.super_resolution.RealESRGANUpscaler
+    params:
+      scale: 4
+  pbr_decomposer:
+    target: zero123pp.ip2p_model.MVIp2p
+    params:
+      stable_diffusion_config:
+        pretrained_model_name_or_path: sudo-ai/zero123plus-v1.2
+        custom_pipeline: ./zero123pp/pipeline_ip2p.py
+      # ckpt_path: /pfs/mt-1oY5F7/chenzilong/Texturing/logs/2024-09-21T22-21-49_ip2p_joint/checkpoints/epoch=000015.ckpt
+  texture_inpainter:
+    target: meshgen.model.texturing.texture_inpainter.TextureInpainter
+    params:
+      base_model: benjamin-paine/stable-diffusion-v1-5
+      # ckpt_path: /pfs/mt-1oY5F7/chenzilong/Texturing/logs/2024-09-13T15-52-18_texture_inpainting_cnet_original_bg/checkpoints/last.ckpt
+  inpaint_elevations: [0, -10, 20, -10, 20, -10, 20]
+  inpaint_azimuths: [0, 60, 120, 180, 240, 300, 0]
+  zero123pp_view_idx: [0, 3, 5, 2, 4, 1]
+  renderer_kwargs:
+    render_angle_thres: 70
+    grid_size: 2048

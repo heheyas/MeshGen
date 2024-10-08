@@ -1,0 +1,88 @@
+target: meshgen.model.diffusion.rfunet.RectifiedFlowUNet2D
+params:
+  weight_decay: 0.0001
+  vis_every: null
+  scale_factor: 0.2684278283548295
+  shift_factor: 0.13850155472755432
+  use_ema: true
+  skip_validation: true
+  rf_mu: 0.0
+  rf_sigma: 1.0
+  timestep_sample: logit_normal
+  scheduler_config:
+    target: meshgen.lr_scheduler.LambdaLinearScheduler
+    params:
+      warm_up_steps:
+      - 1000
+      cycle_lengths:
+      - 5000000
+      f_start:
+      - 1.0e-06
+      f_max:
+      - 1.0
+      f_min:
+      - 0.1
+  autoencoder:
+    target: meshgen.model.triplane_autoencoder.TriplaneKLModel
+    params:
+      triplane_res: 32
+      triplane_ch: 16
+      box_warp: 1.1
+      tv_loss_weight: 0.05
+      weight_decay: 0.0
+      encoder:
+        target: meshgen.modules.shape2vecset.Encoder
+        params:
+          depth: 10
+          dim: 768
+          queries_dim: 768
+          heads: 12
+          dim_head: 64
+          num_inputs: 65536
+          num_latents: 3072
+          output_dim: 32
+          learnable_query: true
+      deconv_decoder:
+        target: meshgen.modules.resnet.DeConvDecoder
+        params:
+          z_channels: 16
+          num_resos: 4
+          num_res_blocks: 1
+          ch: 64
+          out_ch: 64
+          dropout: 0.0
+      mlp_decoder:
+        target: meshgen.modules.mlp.MlpDecoder
+        params:
+          n_features: 64
+          hidden_dim: 64
+          num_layers: 6
+  unet:
+    target: meshgen.modules.diffusion_unet.UNetModel
+    params:
+      image_size: 32
+      in_channels: 16
+      out_channels: 16
+      model_channels: 320
+      attention_resolutions:
+      - 4
+      - 2
+      - 1
+      num_res_blocks: 2
+      channel_mult:
+      - 1
+      - 2
+      - 4
+      - 4
+      num_heads: 8
+      use_spatial_transformer: true
+      transformer_depth: 1
+      context_dim: 1536
+      use_checkpoint: false
+      legacy: false
+      dtype: bf16
+
+  cond_encoder:
+    target: meshgen.modules.encoders.dino.FrozenDINOv2Encoder
+    params:
+      model_name: facebook/dinov2-giant

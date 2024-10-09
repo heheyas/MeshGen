@@ -9,7 +9,6 @@ from torch.optim.lr_scheduler import LambdaLR
 from torch.utils.data import default_collate
 from pathlib import Path
 import tqdm
-import cumcubes
 from einops import rearrange
 
 from meshgen.util import instantiate_from_config

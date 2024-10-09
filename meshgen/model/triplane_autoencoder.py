@@ -8,7 +8,6 @@ from torch.utils.data import default_collate
 from pathlib import Path
 from einops import rearrange, repeat
 import tqdm
-import cumcubes
 import nvdiffrast.torch as dr
 from diso import DiffDMC
 from torchmetrics.image.lpip import LearnedPerceptualImagePatchSimilarity
@@ -183,7 +182,6 @@ class TriplaneAEModel(pl.LightningModule):
 
         occs = torch.cat(occs, dim=0).reshape(R, R, R).to(self.device)
         if not self.use_diso:
-            # vertices_pred, faces_pred = cumcubes.marching_cubes(occs, thresh)
             vertices_pred, faces_pred, normals_pred, _ = measure.marching_cubes(
                 occs.detach().cpu().float().numpy(), thresh, method="lewiner"
             )

@@ -10,7 +10,6 @@ loguru==0.7.2
 lpips==0.1.4
 mediapy==1.2.2
 numpy==2.1.2
-nvdiffrast==0.3.1
 omegaconf==2.1.1
 open3d==0.18.0
 openai==1.51.2
@@ -36,5 +35,5 @@ trimesh==3.23.5
 tyro==0.8.11
 vedo==2024.5.2
 xatlas==0.0.9
-git+https://github.com/lzhnb/CuMCubes
 git+https://github.com/sberbank-ai/Real-ESRGAN.git
+git+https://github.com/NVlabs/nvdiffrast

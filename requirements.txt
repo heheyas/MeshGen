@@ -36,5 +36,5 @@ trimesh==3.23.5
 tyro==0.8.11
 vedo==2024.5.2
 xatlas==0.0.9
-https://github.com/lzhnb/CuMCubes
+git+https://github.com/lzhnb/CuMCubes
 git+https://github.com/sberbank-ai/Real-ESRGAN.git

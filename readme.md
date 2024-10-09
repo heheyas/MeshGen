@@ -5,12 +5,22 @@ This repository contains the official implementation for MeshGen: Generating PBR
 
 
 ### Demos:
+![AABB](https://img.shields.io/badge/Brave-FB542B?style=for-the-badge&logo=Brave&logoColor=white)
 Colab:
 Huggingface:
 
 
 ### Run locally
 #### Install
+First use `pip<24.1` since we are using an old version of lightning:
+```bash
+pip install 'pip<24.1'
+```
+Install `torch`:
+```bash
+pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+```
+then install other dependencies:
 ```bash
 pip install -r requirements.txt
 ```

@@ -9,7 +9,7 @@ kiui==0.2.10
 loguru==0.7.2
 lpips==0.1.4
 mediapy==1.2.2
-numpy==2.1.2
+numpy<2
 omegaconf==2.1.1
 open3d==0.18.0
 openai==1.51.2
@@ -23,17 +23,16 @@ pygltflib==1.16.2
 pyrender==0.1.45
 pytorch_lightning==1.5.9
 pyvista==0.44.1
-rembg==2.0.57
 scikit-image==0.20.0
-torch==2.1.0+cu118
-torch_cluster==1.6.3+pt21cu118
 torchmetrics==0.11.4
-torchvision==0.16.2+cu118
 tqdm==4.66.5
 transformers==4.41.2
 trimesh==3.23.5
 tyro==0.8.11
 vedo==2024.5.2
 xatlas==0.0.9
+kaolin==0.16.0
+rembg
+-f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.1.2_cu118.html
 git+https://github.com/sberbank-ai/Real-ESRGAN.git
-git+https://github.com/NVlabs/nvdiffrast
+git+https://github.com/NVlabs/nvdiffrasgit+https://github.com/facebookresearch/pytorch3d.gitt

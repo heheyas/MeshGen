@@ -16,6 +16,7 @@ First use `pip<24.1` since we are using an old version of lightning:
 ```bash
 pip install 'pip<24.1'
 ```
+If you are with CUDA 11:
 Install `torch`:
 ```bash
 pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
@@ -23,6 +24,16 @@ pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 --extra-index-url https
 then install other dependencies:
 ```bash
 pip install -r requirements.txt
+```
+
+Or you are with CUDA 12:
+Install `torch`:
+```bash
+pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 extra-index-url https://download.pytorch.org/whl/cu121
+```
+then install other dependencies:
+```bash
+pip install -r requirements_cuda12.txt
 ```
 
 #### Shape Generation:

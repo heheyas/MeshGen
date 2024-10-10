@@ -605,6 +605,7 @@ with gr.Blocks(title="MeshGen Demo", css="style.css") as demo:
         queue=False,
     )
 
-demo.launch(server_port=7077, debug=True)
+if __name__ == "__main__":
+    demo.launch(server_port=7077, debug=True)
 
-texture_generator_tempdir.cleanup()
+    texture_generator_tempdir.cleanup()

@@ -1,5 +1,4 @@
 diffusers==0.30.0
-diso==0.1.4
 einops==0.8.0
 gradio==4.44.1
 httpx==0.27.2

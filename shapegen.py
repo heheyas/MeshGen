@@ -28,6 +28,7 @@ warnings.filterwarnings("ignore")
 def vis_diffusion(
     images: str,
     output: str,
+    mesh_output: str = None,
     config: str = "configs/shapegen.yaml",
     ckpt: str = None,
     cfg: float = 3.0,
@@ -39,7 +40,7 @@ def vis_diffusion(
     remove_bg: bool = True,
     ignore_alpha: bool = False,
     alpha_matting: bool = False,
-    export: bool = False,
+    export: bool = True,
     thresh: float = 0.5,
     R: int = 256,
     remesh: bool = False,
@@ -108,7 +109,8 @@ def vis_diffusion(
     output_dir = Path(output)
     output_dir.mkdir(exist_ok=True, parents=True)
     if export:
-        mesh_output_dir = output_dir / "meshes"
+        if mesh_output is None:
+            mesh_output_dir = output_dir / "meshes"
         mesh_output_dir.mkdir(exist_ok=True, parents=True)
         meta = []
 

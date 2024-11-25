@@ -38,7 +38,7 @@ def init_renderer(reso=512, fov=50.0, force_new_render=False):
     if not force_new_render:
         global _render
         if _render is not None:
-            return
+            return _render
     _render = OffscreenRenderer(reso, reso)
     _render.scene.set_background([1, 1, 1, 1])
     bottom_plane = trimesh.creation.box([100, 100, 0.01])

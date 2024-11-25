@@ -5,10 +5,8 @@ This repository contains the official implementation for MeshGen: Generating PBR
 
 
 ### Demos:
-![AABB](https://img.shields.io/badge/Brave-FB542B?style=for-the-badge&logo=Brave&logoColor=white)
 Colab:
 Huggingface:
-
 
 ### Run locally
 #### Install
@@ -38,11 +36,17 @@ pip install -r requirements_cuda12.txt
 
 #### Shape Generation:
 ```bash
-torchrun
+torchrun --nproc_per_node=<> shapegen.py --images <> --output <>
 ```
 
 #### Texture Generation:
 ```bash
+torchrun --nproc_per_node=<> texgen.py
+```
+
+#### Textured Mesh Generation:
+```bash
+torchrun --nproc_per_node=<>
 ```
 
 #### Gradio demo:
@@ -51,7 +55,7 @@ python app.py
 ```
 
 ### Acknowledgement
-- [stable diffusion]()
+- [Stable Diffusion]()
 - [Paint3D]()
 - [Zero123++]()
 - [3DShape2Vecset]()

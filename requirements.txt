@@ -32,6 +32,8 @@ vedo==2024.5.2
 xatlas==0.0.9
 kaolin==0.16.0
 rembg
+timm
+kornia
 -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.1.2_cu118.html
 git+https://github.com/sberbank-ai/Real-ESRGAN.git
 git+https://github.com/NVlabs/nvdiffrast

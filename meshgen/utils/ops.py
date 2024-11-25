@@ -14,7 +14,6 @@ from einops import repeat
 import itertools
 from tqdm import tqdm
 
-from pytorch3d.ops import sample_farthest_points
 import pyfqmr
 
 from meshgen.utils.birefnet import run_model as rembg_birefnet
@@ -115,19 +114,6 @@ def sample_from_planes(
             .reshape(N, n_planes, M, C)
         )
     return output_features
-
-
-@torch.no_grad()
-def fps_single(pcd, N):
-    _, indices = sample_farthest_points(pcd[None], K=N)
-    return indices[0]
-
-
-@torch.no_grad()
-def bacthed_fps(pcd, N):
-    _, indices = sample_farthest_points(pcd, K=N)
-
-    return indices
 
 
 def logit_normal(mu, sigma, shape, device, dtype):

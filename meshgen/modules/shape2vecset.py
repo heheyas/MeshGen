@@ -12,8 +12,6 @@ from torch_cluster import fps
 
 from timm.models.layers import DropPath
 
-from meshgen.utils.ops import bacthed_fps
-
 
 def exists(val):
     return val is not None

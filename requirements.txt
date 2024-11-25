@@ -34,6 +34,8 @@ kaolin==0.16.0
 rembg
 timm
 kornia
+torch-cluster
+-f https://data.pyg.org/whl/torch-2.1.2+cu118.html
 -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.1.2_cu118.html
 git+https://github.com/sberbank-ai/Real-ESRGAN.git
 git+https://github.com/NVlabs/nvdiffrast

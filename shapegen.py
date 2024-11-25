@@ -111,6 +111,8 @@ def vis_diffusion(
     if export:
         if mesh_output is None:
             mesh_output_dir = output_dir / "meshes"
+        else:
+            mesh_output_dir = Path(mesh_output)
         mesh_output_dir.mkdir(exist_ok=True, parents=True)
         meta = []
 

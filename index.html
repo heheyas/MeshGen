@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- bulma css template -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- model viewer -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+  <title>
+    MeshGen
+  </title>
+  <link rel="icon" href="assets/icon.png">
+</head>
+<body>
+  <section class="section">
+
+  <div class="container has-text-centered">
+    <!-- paper title -->
+    <p class="title is-3"> MeshGen: Generating PBR Textured Mesh with Render-Enhanced Auto-Encoder and Generative Data Augmentation </p>
+    <!-- publication -->
+    <p class="subtitle is-4"> CVPR 2025 </p>
+    <!-- authors -->
+    <p class="title is-5 mt-2"> 
+      <a href="https://scholar.google.com.hk/citations?user=2pbka1gAAAAJ&hl=en" target="_blank">Zilong Chen</a><sup>1</sup>, 
+      <a href="https://yikaiw.github.io/" target="_blank">Yikai Wang</a><sup>2</sup>, 
+      <a href="https://github.com/wenqsun" target="_blank">Wenqiang Sun</a><sup>3</sup>, 
+      <a href="https://wangfeng18.github.io/" target="_blank">Feng Wang</a><sup>1</sup>,
+      <a href="https://buaacyw.github.io/" target="_blank">Yiwen Chen</a><sup>4</sup>,
+      <a href="https://sites.google.com/site/thuliuhuaping" target="_blank">Huaping Liu</a><sup>1</sup>
+    </p>
+    <!-- affiliations -->
+    <p class="subtitle is-5"> 
+      <sup>1</sup> Tsinghua University &nbsp;
+      <sup>2</sup> BNU &nbsp;
+      <sup>3</sup> HKUST &nbsp;
+      <sup>4</sup> NTU &nbsp;
+    </p>
+
+    <!-- other links -->
+    <div class="is-flex is-justify-content-center">
+      <span class="icon-text mx-1">
+        <a class="button is-dark" href="" role="button" target="_blank"> <span class="icon"> <ion-icon name="document-outline"></ion-icon> </span> <span> Arxiv </span>  </a> 
+      </span>
+      <span class="icon-text mx-1">
+        <a class="button is-dark" href="https://github.com/heheyas/MeshGen" role="button" target="_blank"> <span class="icon"> <ion-icon name="logo-github"></ion-icon> </span> <span> Code </span> </a> 
+      </span>
+      <span class="icon-text mx-1">
+        <a class="button is-dark" href="https://huggingface.co/heheyas/MeshGen" role="button" target="_blank"> <span class="icon"> <ion-icon name="beer-outline"></ion-icon> </span> <span> Weights </span> </a> 
+      </span>
+      <span class="icon-text mx-1">
+        <a class="button is-dark" href="https://huggingface.co/heheyas/MeshGen/tree/main" role="button" target="_blank"> <span class="icon"> <ion-icon name="beer-outline"></ion-icon> </span> <span> HF Demo </span> </a> 
+      </span>
+      <span class="icon-text mx-1">
+        <a class="button is-dark" href="https://huggingface.co/heheyas/MeshGen/tree/main" role="button" target="_blank"> <span class="icon"> <ion-icon name="beer-outline"></ion-icon> </span> <span> Colab Demo </span> </a> 
+      </span>
+    </div>
+   
+  </div>
+
+  <!-- Youtube video -->
+  <div class="container is-max-desktop has-text-centered">
+    <iframe width="700" height="400" src="https://www.youtube.com/embed/3HO0GuyOJdw?si=D8MiQ_jCOfLVXK3o" title="YouTube video player"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" style="margin-top: 10px; margin-bottom: 10px;" allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- main container -->
+  <div class="container is-max-desktop has-text-centered">
+
+    <!-- abstract -->
+    <p class="title is-3 mt-5 has-text-centered"> Abstract </p>
+    <p class="content is-size-6 has-text-left">
+      We present MeshGen, an advanced image-to-3D pipeline designed to generate high-quality 3D objects with physically based rendering (PBR) textures. Existing methods struggle with issues such as poor auto-encoder performance, limited training datasets, misalignment between input images and 3D shapes, and inconsistent image-based PBR texturing. MeshGen addresses these limitations through several key innovations. First, we introduce a render-enhanced point-to-shape auto-encoder that compresses 3D shapes into a compact latent space, guided by perceptual loss. A 3D-native diffusion model is then established to directly learn the distribution of 3D shapes within this latent space. To mitigate data scarcity and image-shape misalignment, we propose geometric alignment augmentation and generative rendering augmentation, enhancing the diffusion model's controllability and generalization ability. Following shape generation, MeshGen applies a reference attention-based multi-view ControlNet for image-consistent appearance synthesis, complemented by a PBR decomposer to separate PBR channels. Extensive experiments demonstrate that MeshGen significantly enhances both shape and texture generation compared to previous methods.
+    </p>
+
+    <!-- overview -->
+    <p class="title is-3 mt-5 has-text-centered"> Overview </p>
+    <img src="assets/images/overview.jpg" alt="Overview of MeshGen.">
+    
+    <!-- results (videos) -->
+    <p class="title is-3 mt-5 has-text-centered"> Results: Shape Generation </p>
+
+    <p class="content has-text-centered is-size-5">
+      Our image-to-shape diffusion model generates high-quality meshes resembling the input image within 10s.
+    </p>
+    <video muted autoplay loop> <source src="assets/videos/meshgen_shapegen.mp4" type="video/mp4"> </video>
+
+
+    <p class="title is-3 mt-5 has-text-centered"> Results: Texture Generation </p>
+    <p class="content has-text-centered is-size-5">
+      Our texturing pipeline consistent PBR texture within 10s.
+    </p>
+    <video muted autoplay loop> <source src="assets/videos/meshgen_texgen.mp4" type="video/mp4"> </video>
+
+    <!-- citation -->
+    <div class="card mt-4">
+      <header class="card-header">
+        <p class="card-header-title"> Citation </p>
+      </header>
+      <div class="card-content is-size-6 has-text-left">
+<pre><code>@inproceedings{chen2025meshgen,
+  author    = {Chen, Zilong and Wang, Yikai and Sun, Wenqiang and Wang, Feng and Chen, Yiwen and Liu, Huaping},
+  title     = {MeshGen: Generating PBR Textured Mesh with Render-Enhanced Auto-Encoder and Generative Data Augmentation},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month     = {June},
+  year      = {2025}
+}
+</code></pre>
+      </div>
+    </div>
+  </div>
+  </section>
+<footer>
+<p class="content has-text-centered is-size-6">
+    Thanks <a href="https://dreamgaussian.github.io/">DreamGaussian</a> for project page template.
+</p>
+</footer>
+</body>
+</html>

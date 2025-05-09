@@ -4,9 +4,9 @@
 
 Tsinghua University, BNU, HKUST, NTU
 
-
 This repository contains the official implementation for MeshGen: Generating PBR Textured Mesh with Render-Enhanced Auto-Encoder and Generative Data Augmentation.
 
+[Arxiv](http://arxiv.org/abs/2505.04656) | [Project page](https://heheyas.github.io/MeshGen) | [HF Demo]()
 
 ### Run locally
 #### Install

@@ -1,12 +1,12 @@
 ## MeshGen: Generating PBR Textured Mesh with Render-Enhanced Auto-Encoder and Generative Data Augmentation
 
+[Zilong Chen](https://heheyas.github.io), [Yikai Wang](), [Wenqiang Sun](), [Feng Wang](), [Yiwen Chen](), [Huaping Liu]()
+
+Tsinghua University, BNU, HKUST, NTU
+
 
 This repository contains the official implementation for MeshGen: Generating PBR Textured Mesh with Render-Enhanced Auto-Encoder and Generative Data Augmentation.
 
-
-### Demos:
-Colab:
-Huggingface:
 
 ### Run locally
 #### Install
@@ -36,17 +36,17 @@ pip install -r requirements_cuda12.txt
 
 #### Shape Generation:
 ```bash
-torchrun --nproc_per_node=<> shapegen.py --images <> --output <>
+torchrun --nproc_per_node=<num-gpus> shapegen.py --images <image-dir> --output <output-dir>
 ```
 
 #### Texture Generation:
 ```bash
-torchrun --nproc_per_node=<> texgen.py
+torchrun --nproc_per_node=<num-gpus> texgen.py --meta <meta-file> --output <output-dir>
 ```
 
 #### Textured Mesh Generation:
 ```bash
-torchrun --nproc_per_node=<>
+torchrun --nproc_per_node=<num-gpus> jointgen.py --images <output-dir> --output <output-dir>
 ```
 
 #### Gradio demo:
@@ -62,11 +62,12 @@ python app.py
 
 ### Citation
 ```bibtex
-@article{chen2024meshgen,
-    title={MeshGen: Generating PBR Textured Mesh with Render-Enhanced Auto-Encoder and Generative Data Augmentation},
-    author={Chen, Zilong and Wang, Yikai and Sun, Wenqiang and Wang, Feng and Liu, Huaping},
-    journal={},
-    year={2024}
+@inproceedings{chen2025meshgen,
+  author    = {Chen, Zilong and Wang, Yikai and Sun, Wenqiang and Wang, Feng and Chen, Yiwen and Liu, Huaping},
+  title     = {MeshGen: Generating PBR Textured Mesh with Render-Enhanced Auto-Encoder and Generative Data Augmentation},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month     = {June},
+  year      = {2025}
 }
 ```
 
